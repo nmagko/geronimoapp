@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="geronimoApp">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="author" content="Victor C (aka nmagko)">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="select.min.css">
+    <title>Información Juridica Geronimo</title>
+    <script src="src/angular.min.js"></script>
+    <script src="src/select.min.js"></script>
+  </head>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Geronimo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+	    data-target="#navbarCollapse" aria-controls="navbarCollapse"
+	    aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+	<li class="nav-item">
+          <a class="nav-link" routerLink="/home">Home</a>
+	</li>
+      </ul>
+    </div>
+  </nav>
+
+  <body ng-controller="geronimoController">
+
+    <h2>Consultar RUC</h2>
+
+    <form ng-submit="submitForm()">
+      <p class="lead">
+	<label>Tipo:</label>
+	<input type="text" ng-model="formData.tipo" required>
+      </p>
+      <p class="lead">
+	<label>RUC:</label>
+	<input type="text" ng-model="formData.ruc" required>
+      </p>
+      <button class="btn btn-lg btn-primary" type="submit">Consultar</button>
+    </form>
+
+    <h2>Resultado</h2>
+
+    <table class="table table-hover">
+      <thead>
+	<tr>
+          <th>Key</th>
+          <th>Value</th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr ng-repeat="(key, value) in result">
+          <td>{{ key }}</td>
+          <td>{{ value }}</td>
+	</tr>
+      </tbody>
+    </table>
+
+    <script>
+      angular.module('geronimoApp', [])
+    .controller('geronimoController', function ($scope, $http) {
+        $scope.formData = {};
+
+        $scope.submitForm = function () {
+            // La URL de tu web service. Recordatorio: CORS
+            var url = 'http://34.125.99.121/register';
+
+            // POST: data a enviar
+            var data = {
+		tipo: $scope.formData.tipo,
+		ruc: $scope.formData.ruc
+            };
+
+            // Llamada HTTP POST
+            $http.post(url, data)
+		.then(function (response) {
+		    // Callback cuando todo se recibió Okay
+		    $scope.result = response.data;
+		})
+		.catch(function (error) {
+		    // Callback cuando hubo error
+		    console.error('Error:', error);
+		});
+        };
+    });
+    </script>
+
+  </body>
+  <footer>
+    <p  class="text-xs-center">© Copyright 2023. All rights reserved.</p>
+  </footer>
+</html>
