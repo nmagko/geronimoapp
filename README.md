@@ -1,34 +1,32 @@
 # GERONIMO APP
 
-## OBJETIVO:
+## GOAL
 
-Crear el front-end para la aplicación geronimo para consulta de datos de
-RUC y persona juridica.
+Create the front-end for the Geronimo app to query legal entity data.
 
-## DESCRIPCIÓN:
+## DESCRIPTION
 
-La aplicación es responsive y funciona tanto en celular como en
-navegador. Es una aplicación compacta y el campo fundamental es el de
-RUC que debe ser ingresado correctamente, puede optener los datos de
-persona jurídica de cualquier RUC. La vigencia es de 7 días mientras
-esté habiliado el token generado en ruc.com.pe para esta prueba.
+The application is responsive and works on both cell phones and
+browsers. It is a compact application. You can get the data of the legal
+entity in Peru. The validity of the free token is seven days in
+ruc.com.pe. You can create your own token for the same period of time.
 
-## PUBLICACIÓN:
+## PUBLISHING
 
-La aplicación se encuentra publicada por 7 días en:
+The application was published for seven days on:
 
 ```
 http://34.125.99.121/
 ```
 
-## NOTA:
+## NOTE
 
-Se está haciendo uso de protocolo http debido que el GCP que estoy
-usando es personal y lo uso sólo para prototipeos de aplicaciones y
-pruebas de infrastructura y seguridad, los recursos son escasos pero
-suficientes para esta mini aplicación.
+The HTTP protocol has been used because the GCP I am using using is
+personal and I use it only for application prototyping and
+infrastructure and security tests, resources are scarce but enough for
+this tiny application.
 
-## APLICACIONES RELACIONADAS:
+## RELATED APPLICATIONS
 
 - Juridica
 

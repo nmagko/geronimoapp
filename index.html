@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="select.min.css">
-    <title>Información Juridica Geronimo</title>
+    <title>Geronimo Legal Information</title>
     <script src="src/angular.min.js"></script>
     <script src="src/select.min.js"></script>
   </head>
@@ -30,7 +30,7 @@
 
   <body ng-controller="geronimoController">
 
-    <h2>Consultar RUC</h2>
+    <h2>Get RUC</h2>
 
     <form ng-submit="submitForm()">
       <p class="lead">
@@ -41,10 +41,10 @@
 	<label>RUC:</label>
 	<input type="text" ng-model="formData.ruc" required>
       </p>
-      <button class="btn btn-lg btn-primary" type="submit">Consultar</button>
+      <button class="btn btn-lg btn-primary" type="submit">Send</button>
     </form>
 
-    <h2>Resultado</h2>
+    <h2>Response</h2>
 
     <table class="table table-hover">
       <thead>
@@ -67,23 +67,23 @@
         $scope.formData = {};
 
         $scope.submitForm = function () {
-            // La URL de tu web service. Recordatorio: CORS
-            var url = 'http://34.125.99.121/register';
+            // The URL of your web service. Hint: CORS, sometime you can use a proxy.
+            var url = 'http://<YOUR_GKE_IP>:8080/register';
 
-            // POST: data a enviar
+            // POST: sending data
             var data = {
 		tipo: $scope.formData.tipo,
 		ruc: $scope.formData.ruc
             };
 
-            // Llamada HTTP POST
+            // HTTP POST
             $http.post(url, data)
 		.then(function (response) {
-		    // Callback cuando todo se recibió Okay
+		    // Okay reponse Callback
 		    $scope.result = response.data;
 		})
 		.catch(function (error) {
-		    // Callback cuando hubo error
+		    // Error response Callback
 		    console.error('Error:', error);
 		});
         };
